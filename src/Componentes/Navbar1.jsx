@@ -40,18 +40,8 @@ const Navbar1 = () => {
           </Link>
         </li>
         <li className='my-4 py-4 hover:bg-unicauca-azulhover hover:rounded' onClick={handleClick}>
-          <Link to='/Tejidos'>
-            <strong>Hilados en las sociedades prehispánicas</strong>
-          </Link>
-        </li>
-        <li className='my-4 py-4 hover:bg-unicauca-azulhover hover:rounded' onClick={handleClick}>
-          <Link to='/Articulo'>
-            <strong>Hilados en las sociedades prehispánicas</strong>
-          </Link>
-        </li>
-        <li className='my-4 py-4 hover:bg-unicauca-azulhover hover:rounded' onClick={handleClick}>
           <Link to='/Articulo2'>
-            <strong>Hilados en las sociedades prehispánicas</strong>
+            <strong>Hilados</strong>
           </Link>
         </li>
         <li className='my-4 py-4 hover:bg-unicauca-azulhover hover:rounded' onClick={handleClick}>
@@ -63,8 +53,7 @@ const Navbar1 = () => {
           <Link to='/Contact'>
             <strong>Contacto</strong>
           </Link>
-        </li>
-        
+        </li>        
       </ul>
     </div>
   );
