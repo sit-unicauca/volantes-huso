@@ -49,21 +49,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </nav>
-
-        {/* Columna 3 — Participación */}
-        <div className="flex flex-col gap-4">
-          <p className="text-sm font-bold uppercase tracking-wide text-white/70">Tu opinión importa</p>
-          <p className="text-sm text-white/80 leading-relaxed">
-            Ayúdanos a mejorar esta plataforma con tu experiencia.
-          </p>
-          <Link
-            to="/Retroalimentacion"
-            className="self-start border border-white text-white text-sm font-semibold px-5 py-2 rounded-md hover:bg-white hover:text-[#004d27] transition-colors"
-          >
-            Dejar retroalimentación
-          </Link>
-        </div>
+        </nav>        
 
       </div>
 
