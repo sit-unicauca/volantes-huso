@@ -1,0 +1,120 @@
+import { useMeta } from '../hooks/useMeta';
+import { useAnalytics } from '../hooks/useAnalytics';
+import Recuadro from "../Componentes/2D/Recuadro";
+import Recuadro360 from "../Componentes/3D/Recuadro360";
+import HojaLibro from "../Componentes/2D/HojaLibro";
+import Texto from "../Componentes/Text/Texto";
+import Card from "../Componentes/2D/Card";
+import SeccionEducativa from "../Componentes/2D/SeccionEducativa";
+import SectionTitle from "../Componentes/UI/SectionTitle";
+import HeroBanner from "../Componentes/2D/HeroBanner";
+
+// Librerias Mapa
+import MapI from "../Componentes/Map/MapI";
+
+// Librerias del carrusel
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+const Principal = () => {
+  useAnalytics('Inicio');
+  useMeta({
+    titulo: 'Inicio',
+    descripcion: 'Explora los volantes de huso prehispánicos del suroccidente colombiano en el Museo de Historia Natural Unicauca',
+  });
+
+  const cards = [
+    { imagen: 'popayan',     link: 'Popayan', titulo: 'POPAYÁN',  cultura: 'Popayán',  colorCultura: 'bg-green-700 text-white',  parrafo: 'Centro histórico y cultural del Cauca. Sus volantes de huso reflejan la rica tradición cerámica de la región andina caucana.' },
+    { imagen: 'volantefron', link: 'Corinto', titulo: 'CORINTO',   cultura: 'Corinto',   colorCultura: 'bg-orange-700 text-white', parrafo: 'Asentamientos del norte del Cauca. Sus piezas evidencian intercambios culturales entre grupos de la cordillera y el valle del río Cauca.' },
+    { imagen: 'patia',       link: 'Patia',   titulo: 'PATÍA',     cultura: 'Patía',     colorCultura: 'bg-teal-700 text-white',   parrafo: 'Valle del río Patía en el Cauca. Sus piezas reflejan las tradiciones de los pueblos que habitaron esta región interandina.' },
+    { imagen: 'volantetra',  link: 'Quimbaya',titulo: 'QUIMBAYA',  cultura: 'Quimbaya',  colorCultura: 'bg-amber-700 text-white',  parrafo: 'Conocida por su maestría en orfebrería. Sus volantes muestran la habilidad técnica y estética de uno de los pueblos más refinados del occidente colombiano.' },
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768, 
+        settings: {
+          slidesToShow: 1, 
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 1280, 
+        settings: {
+          slidesToShow: 2, 
+          slidesToScroll: 1,
+        }
+      }
+    ]
+  };
+
+  return (
+    <div className='min-h-screen flex flex-wrap items-center justify-center text-center bg-unicauca-blancoRoto'>
+      <main className='min-h-600 flex flex-wrap items-center justify-center w-full'>
+
+        <HeroBanner />
+
+     
+        <section aria-label="Colecciones del museo" className='section-gap flex flex-col sm:flex-row justify-center items-stretch w-full'>
+          <HojaLibro
+            imagen='textiles'
+            titulo='Textiles en la Arqueología del Suroccidente Colombiano'
+            parrafo='El tejido fue una de las prácticas culturales más importantes de las sociedades prehispánicas del suroccidente colombiano. A través de fibras vegetales y animales, estas comunidades no solo cubrían sus cuerpos, sino que expresaban su identidad, su espiritualidad y su organización social. Los objetos relacionados con la producción textil, como los volantes de huso, son hoy testimonios materiales de esa riqueza cultural.'
+            link='Textiles'
+          />
+          <HojaLibro
+            imagen='coleccion'
+            titulo='La Colección de Volantes de Huso'
+            parrafo='El Museo de Historia Natural de la Universidad del Cauca conserva una colección de volantes de huso provenientes de diversas culturas del suroccidente colombiano. Estas pequeñas piezas de cerámica, piedra o hueso fueron utilizadas para hilar fibras y representan un valioso registro de las técnicas textiles prehispánicas de la región. Cada pieza es única y refleja las tradiciones artesanales de su cultura de origen.'
+            link='Volantes'
+          />
+        </section>
+
+        <section aria-label="Áreas arqueológicas de Colombia" className='section-gap flex flex-col sm:flex-row justify-center items-center w-full'>
+          <MapI />
+          <Texto
+            titulo='Áreas Arqueológicas del Suroccidente Colombiano'
+            parrafo='La colección del Museo de Historia Natural cuenta con piezas de cuatro zonas arqueológicas del suroccidente colombiano: Popayán, Corinto, Patía y Quimbaya. Cada zona tiene características únicas que se reflejan en la forma, decoración y materiales de sus volantes de huso.'
+          />
+        </section>
+
+        <div id="coleccion" className="section-gap w-full px-4 max-w-screen-lg mx-auto">
+          <SectionTitle
+            titulo="Áreas Arqueológicas"
+            subtitulo="Explora los volantes de huso de las cuatro zonas arqueológicas representadas en la colección"
+          />
+        </div>
+
+        <section aria-label="Culturas arqueológicas" className='w-full max-w-xs sm:max-w-screen-xs md:max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg px-4 pb-20 md:pb-24'>
+          <Slider {...settings}>
+            {cards.map((card, index) => (
+              <div key={index}>
+                <Card imagen={card.imagen} titulo={card.titulo} parrafo={card.parrafo} link={card.link} cultura={card.cultura} colorCultura={card.colorCultura}/>
+              </div>
+            ))}
+          </Slider>
+        </section>
+
+        <div className="section-gap w-full px-4 max-w-screen-lg mx-auto">
+          <SectionTitle
+            titulo="¿Qué son los Volantes de Huso?"
+            subtitulo="Descubre estos instrumentos de hilado prehispánicos del suroccidente colombiano"
+          />
+        </div>
+
+        <SeccionEducativa />
+
+      </main>
+    </div>
+  );
+}
+
+export default Principal;
+
